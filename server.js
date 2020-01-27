@@ -16,6 +16,7 @@ app.use(express.json());
 
 var tablesList = [];  // array of customers at tables 
 var waitList = [];    // array of customers on waitlist 
+var customercount = 0;  // increment for each customer to become id 
 
 // What a customer object looks like 
 //   { 
@@ -50,21 +51,36 @@ function handleRequest(req, res) {
 
 }
 
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "home.html"));
+});
+
+app.get("/home", function(req, res) {
+  res.sendFile(path.join(__dirname, "home.html"));
+});
+
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
+});
+
+app.get("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "reserve.html"));
+});
+
+app.get("/api/tables", function (req, res) { 
+   console.log ("/api/tables called."); 
+});
+
+
 // new reservation  - takes in JSON input
-app.post("/api/characters", function(req, res) {
+app.post("/api/reserve", function(req, res)  {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
-    var newCharacter = req.body;
+    var newCustomer = req.body;
+    console.log(req.body);  
   
-    // Using a RegEx Pattern to remove spaces from newCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    newCharacter.routeName = newCharacter.name.replace(/\s+/g, "").toLowerCase();
-  
-    console.log(newCharacter);
-  
-    characters.push(newCharacter);
-  
-    res.json(newCharacter);
+    
+
   });
   
   // Starts the server to begin listening
