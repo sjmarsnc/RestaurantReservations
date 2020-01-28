@@ -13,18 +13,57 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
+<style> 
+#clear, #tableList, #waitList {
+    color: #007bff;
+    cursor: pointer; 
+}
+
+
+</style>
+
 <body>
     <div class="jumbotron">
         <div class="jumbotron">
             <h1 class="display-4 text-center"><i class="fas fa-fire"></i> Hot Stuff Restaurant</h1>
             <p class="lead text-center">Get your seat before they're all gone!</p>
             <div class="row justify-content-around">
-                <a class="btn btn-primary btn-lg" href="http://localhost:3000/tables" role="button"><i class="fa fa-list"></i> View tables and waitlist</a>
-                <a class="btn btn-warning btn-lg" href="http://localhost:3000/reserve" role="button"><i class="fas fa-calendar-day"></i> Reserve a Table / Waitlist</a>
+                <a class="btn btn-primary btn-lg" href="/tables" role="button"><i class="fa fa-list"></i> View tables and waitlist</a>
+                <a class="btn btn-warning btn-lg" href="/reserve" role="button"><i class="fas fa-calendar-day"></i> Reserve a Table / Waitlist</a>
             </div>
         </div>
     </div>
     <br>
-    &nbsp;<a href="localhost:3000/api/clear">Clear lists</a> | <a href="localhost:3000/api/tables">API table list</a> | <a href="localhost:3000/api/wait">API wait list</a>
+    &nbsp;<span id="clear">Clear lists</span> | <span id="tableList">API table list</span> | <span id="waitList">API wait list</span>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+      $("#clear").on("click", function(event) {
+          event.preventDefault();
+          console.log("Clear tables and wait lists");  
+
+          $.post("/api/clear", function(data) {
+            if (data) alert ("Table and wait list cleared."); 
+            else ("Unable to clear lists."); 
+          });
+        });
+        
+        $("#tableList").on("click", function(event) {
+          event.preventDefault();
+          console.log("Show table list");  
+          $.post("/api/tables", function(data) {
+            alert(data);  
+          });
+        });
+        
+        $("#waitList").on("click", function(event) {
+          event.preventDefault(); 
+          console.log("Show wait list"); 
+          $.post("/api/c\wait", function(data) {
+            alert(data); 
+          });
+        });
+        
+  
+  </script>
 </body>
 </html>

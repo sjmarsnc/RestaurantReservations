@@ -16,7 +16,7 @@
 <body>
     <div class="jumbotron">
         <div class="jumbotron">
-            <h1 class="display-2 text-center">Request a reservation</h1>
+            <h1 class="display-4 text-center">Request a reservation</h1>
             
             <div class="row justify-content-center">
                 <a class="btn btn-primary btn-lg mr-5" href="./tables" role="button"><i class="fa fa-clipboard-list"></i> View tables</a>
@@ -63,18 +63,14 @@
         
         $("#reserve-btn").on("click", function(event) {
           event.preventDefault();
-          console.log("got into onclick function");  
           var newCustomer = {
             name: $("#name").val().trim(),
             email: $("#email").val().trim(),
-            phone: $("#phone").val().trim(),
-            id: $("#id")
+            phone: $("#phone").val().trim()
           };  
-          
-          var custJSON = JSON.stringify(newCustomer); 
-          
-          $.post("localhost:3000/api/reserve", custJSON)
-          .then(function(data) {
+          console.log(newCustomer);  
+
+          $.post("/api/reserve", newCustomer, function(data) {
             console.log(data);
             alert("Got a table or position on waitlist");
           });
@@ -82,7 +78,6 @@
         
         
       </script>
-      <!-- <script type=text/javascript" scr="./lib/Customer.js"></script>  -->
-      <!-- <!-- <script type="text/javascript" src="./lib/reserve.js"></script> --> -->
+      <!-- could set up later so that the js in a separate file would be served -->
 </body>
 </html>

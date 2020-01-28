@@ -2,7 +2,7 @@
 // =============================================================
 var express = require("express");
 var path = require("path");
-var customer = require("./lib/Customer"); 
+var Customer = require("./lib/Customer"); 
 var http = require("http");  
 
 // Sets up the Express App
@@ -69,7 +69,24 @@ app.get("/reserve", function(req, res) {
 
 app.get("/api/tables", function (req, res) { 
    console.log ("/api/tables called."); 
+   console.log(tablesList); 
+   return res.json(tablesList); 
 });
+
+app.get("/api/wait", function (req, res) { 
+  console.log ("/api/wait called."); 
+  console.log(waitList);  
+  return res.json(waitList); 
+});
+
+app.get("/api/clear", function (req, res) { 
+  console.log ("/api/clear called."); 
+  tablesList.length = 0; ; 
+  waitList.length = 0;  
+  console.log(waitList);  
+  return res.json(true); 
+});
+
 
 
 // new reservation  - takes in JSON input
@@ -78,8 +95,17 @@ app.post("/api/reserve", function(req, res)  {
     // This works because of our body parsing middleware
     var newCustomer = req.body;
     console.log(req.body);  
-  
-    
+    const { name, email, phone }  = req.body; 
+    newCustomer = new Customer (name, phone, email);  
+
+    if (tablesList.length < 5) { 
+        tablesList.push(newCustomer); 
+        return "You have a table!"; 
+    }
+    else { 
+      waitList.push(newCustomer); 
+      return `You are in position ${waitList.length -1} on the waitlist.`;
+    }    
 
   });
   
