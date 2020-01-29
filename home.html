@@ -24,17 +24,15 @@
 
 <body>
     <div class="jumbotron">
-        <div class="jumbotron">
             <h1 class="display-4 text-center"><i class="fas fa-fire"></i> Hot Stuff Restaurant</h1>
             <p class="lead text-center">Get your seat before they're all gone!</p>
             <div class="row justify-content-around">
                 <a class="btn btn-primary btn-lg" href="/tables" role="button"><i class="fa fa-list"></i> View tables and waitlist</a>
                 <a class="btn btn-warning btn-lg" href="/reserve" role="button"><i class="fas fa-calendar-day"></i> Reserve a Table / Waitlist</a>
             </div>
-        </div>
     </div>
     <br>
-    &nbsp;<span id="clear">Clear lists</span> | <span id="tableList">API table list</span> | <span id="waitList">API wait list</span>
+    &nbsp;<span id="clear">Clear lists</span> | <a href="/api/tables">API table list</a> | <a href="/api/wait">API wait list</a> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
       $("#clear").on("click", function(event) {
@@ -47,21 +45,21 @@
           });
         });
         
-        $("#tableList").on("click", function(event) {
-          event.preventDefault();
-          console.log("Show table list");  
-          $.post("/api/tables", function(data) {
-            alert(data);  
-          });
-        });
+        // $("#tableList").on("click", function(event) {
+        //   event.preventDefault();
+        //   console.log("Show table list");  
+        //   $.post("/api/tables", function(data) {
+        //     alert(data);  
+        //   });
+        // });
         
-        $("#waitList").on("click", function(event) {
-          event.preventDefault(); 
-          console.log("Show wait list"); 
-          $.post("/api/c\wait", function(data) {
-            alert(data); 
-          });
-        });
+        // $("#waitList").on("click", function(event) {
+        //   event.preventDefault(); 
+        //   console.log("Show wait list"); 
+        //   $.post("/api/c\wait", function(data) {
+        //     alert(data); 
+        //   });
+        // });
         
   
   </script>

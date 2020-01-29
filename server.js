@@ -83,8 +83,7 @@ app.get("/api/clear", function (req, res) {
   console.log ("/api/clear called."); 
   tablesList.length = 0; ; 
   waitList.length = 0;  
-  console.log(waitList);  
-  return res.json(true); 
+  return res.json( {msg: "Lists have been cleared."}); 
 });
 
 

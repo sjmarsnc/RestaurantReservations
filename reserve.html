@@ -15,18 +15,13 @@
 
 <body>
     <div class="jumbotron">
-        <div class="jumbotron">
             <h1 class="display-4 text-center">Request a reservation</h1>
             
             <div class="row justify-content-center">
                 <a class="btn btn-primary btn-lg mr-5" href="./tables" role="button"><i class="fa fa-clipboard-list"></i> View tables</a>
                 <a class="btn btn-light btn-lg ml-5" href="./home" role="button"><span class="fa fa-home"> Home</span></a>
             </div>
-        </div>
 
-        <card> 
-
-        </card>
     </div>
 
     <div class="card">
@@ -74,6 +69,9 @@
             console.log(data);
             alert("Got a table or position on waitlist");
           });
+          $("#name").val(""); 
+          $("#email").val(""); 
+          $("#phone").val("");  
         });
         
         
