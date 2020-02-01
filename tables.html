@@ -74,7 +74,7 @@
         </div>
     </div>
     <br>
-    &nbsp;<a href="localhost:3000/api/clear">Clear lists</a> | <a href="localhost:3000/api/tables">API table list</a> | <a href="localhost:3000/api/wait">API wait list</a>
+    &nbsp;<a href="/api/clear">Clear lists</a> | <a href="/api/tables">API table list</a> | <a href="/api/wait">API wait list</a>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script> 
    $.ajax({ url: "/api/tables", method: "GET" })
@@ -98,7 +98,7 @@
           } 
           console.log(tablesEl);  
           if (tables.length === 0) { 
-              tablesEl.text = "No tables currently booked."; 
+              tablesEl.content = "No tables currently booked."; 
           }
 
 
@@ -124,7 +124,7 @@
 
           } 
           if (tables.length === 0) { 
-              waitEl.text = "No one currently on wait list.";  
+              waitEl.content = "No one currently on wait list.";  
           }
           console.log(waitEl);  
 
